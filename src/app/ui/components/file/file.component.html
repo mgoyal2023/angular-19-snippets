@@ -1,0 +1,6 @@
+<mat-label>{{ label }}</mat-label>
+<input matInput [disabled]="control?.disabled || disabled" [ngStyle]="cssStyle" (change)="onFileSelected($event)"
+    [accept]="accept" [multiple]="multiple" type="file" />
+@if(fileNames && showFileNames){
+<mat-hint>{{ fileNames }}</mat-hint>
+}

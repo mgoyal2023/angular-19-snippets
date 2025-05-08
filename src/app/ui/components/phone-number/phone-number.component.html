@@ -1,0 +1,36 @@
+<div class="phone-input-container">
+    <div class="country-selector" (click)="onToggleDropdown()">
+      @if (showFlag) {
+      <img [src]="selectedCountry.flag" class="flag" alt="Flag" />
+      }
+      <span>{{ selectedCountry.dialCode }}</span>
+      <span class="dropdown-arrow">▼</span>
+    </div>
+  
+    <input type="text" [value]="phoneNumber" [placeholder]="placeholder" [attr.maxlength]="maxLength + 5"
+      (input)="onPhoneInput($event)" (paste)="onPaste($event)" />
+  
+    @if (dropdownOpen) {
+    <div class="dropdown">
+      <input type="text" [(ngModel)]="searchText" placeholder="Search country" />
+      <ul>
+        @if (!filteredCountries().length) {
+        <span>No Country Found</span>
+        }
+        @for (country of filteredCountries(); track $index) {
+        <li (click)="onSelectCountry(country)">
+          <img [src]="country.flag" class="flag" alt="Flag1" />
+          <span>{{ country.name }}</span>
+          <span>{{ country.dialCode }}</span>
+        </li>
+        }
+      </ul>
+    </div>
+    }
+  </div>
+  
+  @if (validationMessage) {
+  <div class="validation-msg" [class.invalid]="control?.hasError('invalidPhoneNumber')">
+    {{ validationMessage }}
+  </div>
+  }

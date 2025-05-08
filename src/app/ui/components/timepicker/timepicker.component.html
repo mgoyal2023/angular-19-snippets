@@ -1,0 +1,40 @@
+<div class="time-picker-wrapper" (click)="$event.stopPropagation()">
+    <div *ngIf="!range" class="time-input" (click)="onToggleTimePicker()">
+        <input type="text" [value]="control ? (control.value | date: use24HourFormat ? 'HH:mm' : 'hh:mm a') : (_value?.time | date: use24HourFormat ? 'HH:mm' : 'hh:mm a')" readonly (blur)="onBlurEvent()" />
+        <span class="clock-icon">🕒</span>
+        @if(isOpen) {
+            <ng-container *ngTemplateOutlet="dropdown"> </ng-container>
+        }
+    </div>
+
+    <div *ngIf="range" class="time-range-wrapper">
+        <div class="time-input" (click)="onToggleTimePickerStart()">
+            <input type="text" [value]="startControl ? (startControl.value | date: use24HourFormat ? 'HH:mm' : 'hh:mm a') : (_value?.start  | date: use24HourFormat ? 'HH:mm' : 'hh:mm a')" readonly placeholder="Start Time" (blur)="onBlurEvent()" />
+            <span class="clock-icon">🕒</span>
+             @if(isStartOpen) {
+            <ng-container *ngTemplateOutlet="dropdown"> </ng-container>
+        }
+            
+        </div>
+        <div class="time-divider">-</div>
+        <div class="time-input" (click)="onToggleEndTimePickerEnd()">
+            <input type="text" [value]="endControl ? (endControl.value | date: use24HourFormat ? 'HH:mm' : 'hh:mm a') : (_value?.end | date: use24HourFormat ? 'HH:mm' : 'hh:mm a')" readonly placeholder="End Time" (blur)="onBlurEvent()" />
+            <span class="clock-icon">🕒</span>
+             @if(isEndOpen) {
+            <ng-container *ngTemplateOutlet="dropdown"> </ng-container>
+        }
+        </div>
+    </div>
+
+<ng-template #dropdown>
+    <div class="time-picker-container" #timePickerContainer [class.open]="isEndOpen || isStartOpen || isOpen">
+        <ul class="time-options">
+            <li *ngFor="let option of (isEndOpen ? onGetFilteredTimeOptions() : timeOptions)" 
+                [class.selected]="onGetSelectedTime(option)"
+                (click)="onTimeSelected(option, isEndOpen)">
+                {{ option }}
+                <span *ngIf="onGetSelectedTime(option)" class="tick-mark">✔</span>
+            </li>
+        </ul>
+    </div>
+</ng-template>

@@ -1,0 +1,8 @@
+@if(selectedComponent) {  
+  <div class="dashboard-container">
+      <app-menu (componentSelected)="onComponentSelected($event)"></app-menu>
+    <div class="details-section">
+      <router-outlet />
+    </div>
+  </div>
+}

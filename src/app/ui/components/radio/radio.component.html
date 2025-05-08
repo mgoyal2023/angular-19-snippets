@@ -1,0 +1,14 @@
+@if (label) {
+  <mat-label class="dt-form-label">{{ label }}</mat-label>
+}
+<mat-radio-group
+  [value]="control ? control.value : value"
+  (change)="onChange($event)"
+  class="dt-radio-group" 
+  [ngStyle]="cssStyle">
+  @for(option of options; track $index){
+    <mat-radio-button [value]="option[keyExpr]" [disabled]="option.disabled">
+      {{ option[valueExpr] }}
+    </mat-radio-button>
+  }
+</mat-radio-group>

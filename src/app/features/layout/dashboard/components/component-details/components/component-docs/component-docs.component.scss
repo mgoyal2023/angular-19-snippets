@@ -1,0 +1,77 @@
+.item-container {
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.component-docs {
+  h3 {
+    margin-bottom: 1rem;
+  }
+  .code-container {
+    position: relative;
+    pre {
+      background-color: #1e1e1e; /* Black background similar to VS Code */
+      color: #d4d4d4; /* Light gray text color */
+      padding: 1rem;
+      border-radius: 5px;
+      overflow-x: auto;
+      font-family: 'Courier New', Courier, monospace; /* Monospace font for code */
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .copy-button {
+      img{
+        width: 25px;
+        height:25px;
+      }
+      position: absolute;
+      top: 70px;
+      right: 10px;
+      background: #fff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s;
+      &:hover {
+        background-color: #c7c7c7;
+      }
+      .material-icons {
+        font-size: 16px;
+      }
+    }
+  }
+  code {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  .toggle-buttons{
+    margin: 25px 0px;
+  }
+  button{
+    background-color: #e7e7e7;
+    color:#217cb0;
+    border:none;
+    padding: 10px 15px;
+  }
+  button.active{
+    background-color: #217cb0;
+    color:#f0f0f0
+  }
+}
+h4{
+  font-weight: 500;
+}
+
+dt-grister {
+  height: 200px;
+  display: flex;
+}

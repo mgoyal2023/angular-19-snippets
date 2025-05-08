@@ -1,0 +1,6 @@
+<mat-form-field class="dt-form-field-container" [ngStyle]="cssStyle">
+    <mat-label class="dt-form-label">{{ label }}@if(required){<sup>*</sup>}</mat-label>
+    <input class="dt-form-field" matInput [formControl]="control" placeholder="{{ placeholder }}" [readonly]="readonly"
+        (keypress)="restrictToNumbers($event)" />
+    <ng-container *ngTemplateOutlet="iconTemplate"></ng-container>
+</mat-form-field>

@@ -1,0 +1,113 @@
+.phone-input-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 6px 10px;
+    border-radius: 8px;
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+    background-color: #fff;
+    gap: 8px;
+    font-family: 'Segoe UI', sans-serif;
+ }
+ 
+ .country-selector {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 6px;
+    user-select: none;
+ }
+ 
+ .flag {
+    width: 22px;
+    height: 16px;
+    border-radius: 2px;
+    object-fit: cover;
+ }
+ 
+ .dropdown-arrow {
+    font-size: 12px;
+    margin-left: 4px;
+ }
+ 
+ input[type='text'] {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 6px 8px;
+    font-size: 14px;
+    background-color: transparent;
+    color: #333;
+ }
+ 
+ .dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    z-index: 1000;
+ }
+ 
+ .dropdown input[type='text'] {
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #eee;
+    padding: 10px;
+    font-size: 14px;
+    box-sizing: border-box;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 2;
+ }
+ 
+ .dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 200px;
+    overflow-y: auto;
+ }
+ 
+ .dropdown li {
+    display: flex;
+    align-items: center;
+    padding: 8px 10px;
+    gap: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+ }
+ 
+ .dropdown li span {
+    font-size: 14px;
+    color: #333;
+ }
+ 
+ .dropdown li:hover {
+    background-color: #f4f4f4;
+ }
+ 
+ .no-result {
+    text-align: center;
+    padding: 10px;
+    font-size: 13px;
+    color: #888;
+ }
+ 
+ .validation-msg {
+    color: #d32f2f;
+ }
+ 
+ .number-type {
+    font-size: 12px;
+    color: #666;
+    margin-top: 4px;
+  }
+  

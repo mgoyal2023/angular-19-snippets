@@ -1,0 +1,10 @@
+@for( item of otpArray; track $index){
+    <mat-form-field>
+      <input matInput #otpInput type="text" maxlength="1" (input)="onInput($event, $index)"
+        (paste)="handlePaste($event, $index)" (keydown)="onKeyDown($event, $index)" (keypress)="restrictToNumbers($event)"
+        [ngClass]="cssStyle" />
+    </mat-form-field>
+    @if(hyphen===true && $index === 2  && length ===6 ){
+    <span class="otp-hyphen">-</span>
+    }
+    }

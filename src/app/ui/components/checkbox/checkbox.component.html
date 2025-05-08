@@ -1,0 +1,4 @@
+<mat-checkbox [checked]="control ? control.value : value" [disabled]="control ? control.disabled : disabled"
+  [ngStyle]="cssStyle" (change)="onCheckboxChange($event.checked)">
+  {{ label }}
+</mat-checkbox>

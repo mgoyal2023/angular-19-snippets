@@ -1,0 +1,10 @@
+@if (messageTemplate) {
+    <ng-container *ngTemplateOutlet="messageTemplate; context: { 
+            remainingTime: timeLeft, 
+            formattedTime: formattedTime, 
+            reset: resetTimer.bind(this) 
+          }">
+    </ng-container>
+    } @else {
+    <span>{{ formattedTime }}</span>
+    }

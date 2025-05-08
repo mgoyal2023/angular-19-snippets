@@ -1,0 +1,48 @@
+@if(dateRange) {
+<mat-form-field [appearance]="appearance" [floatLabel]="floatLabel">
+    <mat-label>{{placeholder || 'Enter a date range'}}</mat-label>
+    <mat-date-range-input [rangePicker]="picker" [disabled]="disabled">
+        <input matStartDate [value]="startControl ? startControl.value : value.start" [readonly]="onlyInputDisabled"
+            [placeholder]="startDatePlaceholder" [disabled]="disabled" (dateChange)="onStartDateChange($event)"
+            (dateInput)="onStartDateInput($event)" (blur)="onTouched()">
+        <input matEndDate [value]="endControl ? endControl.value : value.end" [readonly]="onlyInputDisabled" [placeholder]="endDatePlaceholder"
+            [disabled]="disabled" (dateChange)="onEndDateChange($event)" (blur)="onTouched()"
+            (dateInput)="onEndDateInput($event)">
+    </mat-date-range-input>
+    @if(showHint) {
+    <mat-hint>{{ getHintText() }}</mat-hint>
+    }
+    <mat-datepicker-toggle matIconSuffix [for]="picker"
+        [disabled]="disabled || overlayDisabled"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker [startView]="startView" [startAt]="startAt" (opened)="onCalendarOpened()"
+        (closed)="onCalendarClosed()" (monthSelected)="onMonthSelected($event)" (yearSelected)="onYearSelected($event)">
+        @if(showActionButtons) {
+        <mat-date-range-picker-actions>
+            <button mat-button matDatepickerCancel>Cancel</button>
+            <button mat-raised-button matDatepickerApply>Apply</button>
+        </mat-date-range-picker-actions>
+        }
+    </mat-date-range-picker>
+</mat-form-field>
+}
+@else {
+<mat-form-field [appearance]="appearance" [floatLabel]="floatLabel">
+    <mat-label>{{placeholder || 'Choose a date'}}</mat-label>
+    <input matInput [value]="control ? control.value : value.date  " [matDatepicker]="picker" [readonly]="onlyInputDisabled"
+        [disabled]="disabled" (dateInput)="onDateSelected($event)" (blur)="onTouched()" (dateChange)="onDateChange($event)">
+    @if(showHint) {
+    <mat-hint>{{ getHintText() }}</mat-hint>
+    }
+    <mat-datepicker-toggle matIconSuffix [for]="picker"
+        [disabled]="disabled || overlayDisabled"></mat-datepicker-toggle>
+    <mat-datepicker #picker [startView]="startView" [startAt]="startAt" (opened)="onCalendarOpened()"
+        (closed)="onCalendarClosed()" (monthSelected)="onMonthSelected($event)" (yearSelected)="onYearSelected($event)">
+        @if(showActionButtons) {
+        <mat-date-range-picker-actions>
+            <button mat-button matDatepickerCancel>Cancel</button>
+            <button mat-raised-button matDatepickerApply>Apply</button>
+        </mat-date-range-picker-actions>
+        }
+    </mat-datepicker>
+</mat-form-field>
+}

@@ -10,6 +10,8 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/cdk": "^19.2.10",
+    "@angular/material": "^19.2.10",
     "@angular/animations": "^19.0.0",
     "@angular/common": "^19.0.0",
     "@angular/compiler": "^19.0.0",
@@ -18,6 +20,8 @@
     "@angular/platform-browser": "^19.0.0",
     "@angular/platform-browser-dynamic": "^19.0.0",
     "@angular/router": "^19.0.0",
+    "libphonenumber-js": "^1.12.7",
+    "ng-dits-gridster": "^0.0.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"

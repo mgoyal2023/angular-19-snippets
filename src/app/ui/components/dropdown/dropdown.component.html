@@ -1,0 +1,14 @@
+<mat-form-field appearance="outline">
+  @if(label){
+  <mat-label class="dt-form-label">{{ label }}</mat-label>
+  }
+  <mat-select [value]="control ? control.value : value" [multiple]="multiple"
+    [disabled]="control ? control.disabled : disabled" [ngStyle]="cssStyle"
+    (selectionChange)="onSelectionChange($event.value)">
+    @for(option of options; track $index){
+    <mat-option [value]="option[keyExpr]" [disabled]="option.disabled">
+      {{ option[valueExpr] }}
+    </mat-option>
+    }
+  </mat-select>
+</mat-form-field>

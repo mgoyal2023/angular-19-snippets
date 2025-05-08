@@ -1,0 +1,64 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #217cb0; /* Blue */
+  color: #ffffff; /* White */
+  padding: 10px 20px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+.logo {
+  font-size: 2rem; /* Slightly larger font size for emphasis */
+  font-weight: 600; /* Semi-bold for a professional look */
+  color: #ffffff; /* White color for text */
+  display: flex;
+  align-items: center;
+  font-family: 'Roboto', sans-serif; /* Modern and professional font */
+  text-transform: capitalize; /* Capitalize the first letter of each word */
+  letter-spacing: 1px; /* Subtle spacing between letters */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for depth */
+}
+
+.logo-image {
+  height: 50px; /* Increased height */
+  width: auto; /* Maintain aspect ratio */
+  object-fit: contain;
+  margin-right: 10px;
+}
+
+.dropdown {
+  margin-left: auto;
+  position: relative;
+}
+
+.dropdown-button {
+  background-color: #ffffff; /* White */
+  color: #217cb0; /* Blue */
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-right: 35px;
+}
+
+.dropdown-content {
+  width:76px;
+  display: none;
+  position: absolute;
+  right: 20;
+  background-color: #ffffff; /* White */
+  color: #000000; /* Black */
+  border: 1px solid #ddd;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}

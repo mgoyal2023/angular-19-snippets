@@ -1,0 +1,27 @@
+<div class="data">
+@if(componentDetails?.tabView) {
+<div class="tabs">
+  <button *ngFor="let tab of tabs" (click)="activeTab = tab" [class.active]="activeTab === tab">
+    {{ tab }}
+  </button>
+</div>
+}
+
+<div>
+  <div class="component-details">
+    <h2 *ngIf="component">{{ component | titlecase}}</h2>
+    <p *ngIf="!component">Please select a component to view its details.</p>
+    <p *ngIf="componentDetails?.description">{{ componentDetails?.description }}</p>
+  </div>
+  
+  <div class="tab-content">
+    <ng-container *ngIf="activeTab === 'OVERVIEW'">
+      <app-component-docs [config]="componentDetails"></app-component-docs>
+    </ng-container>
+    <ng-container *ngIf="activeTab === 'API'">
+      <app-api-tab [config]="componentDetails?.api"></app-api-tab>
+    </ng-container>
+  </div>
+</div>
+
+</div>

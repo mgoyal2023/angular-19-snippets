@@ -1,0 +1,19 @@
+<div class="sidebar">
+  <ul>
+    <li *ngFor="let menu of menuList" 
+        (click)="onSelectMenu(menu)" 
+        [ngClass]="{'highlight': menu.name.toLowerCase() === selectedComponent.toLowerCase()}">
+      <div (click)="toggleSubMenu(menu.name)" class="menu-item">
+        {{ menu.name }}
+        <span *ngIf="menu.subMenu" class="arrow-icon">&#9660;</span> 
+      </div>
+      <ul *ngIf="menu.subMenu && openMenus.has(menu.name)">
+        <li *ngFor="let subMenu of menu.subMenu" 
+            (click)="selectComponent(subMenu, $event)" 
+            [class.active]="selectedComponent.toLowerCase() === subMenu.toLowerCase()">
+          {{ subMenu }}
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

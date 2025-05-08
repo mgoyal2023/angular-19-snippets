@@ -1,0 +1,75 @@
+@for(item of config; track $index) {
+<div class="item-container">
+  <h4>{{ item.description }}</h4>
+  <div class="component-docs">
+    <h3>Code Snippet</h3>
+    <div class="code-container">
+      @if(item.codeSnippet) {
+      <div class="toggle-buttons">
+        @if(item.codeSnippet.html) {
+        <button class="toggle-button" [class.active]="item.activeCodeType === 'html'"
+          (click)="setActiveCodeType(item, 'html')">HTML</button>
+        }
+        @if(item.codeSnippet.ts) {
+        <button class="toggle-button" [class.active]="item.activeCodeType === 'ts'"
+          (click)="setActiveCodeType(item, 'ts')">Script</button>
+        }
+        @if(item.codeSnippet.command) {
+        <button class="toggle-button" [class.active]="item.activeCodeType === 'command'"
+          (click)="setActiveCodeType(item, 'command')">Command</button>
+        }
+      </div>
+      <button class="copy-button"
+        (click)="copyCode(item.activeCodeType === 'html' ? item.codeSnippet.html : item.activeCodeType === 'ts' ? item.codeSnippet.ts : item.codeSnippet.command)">
+        <img src="assets/copy.svg" alt="Copy" class="copy-icon" />
+      </button>
+      <pre><code>{{ item.activeCodeType === 'html' ? item.codeSnippet.html : item.activeCodeType === 'ts' ? item.codeSnippet.ts : item.codeSnippet.command }}</code></pre>
+      }
+      @if(!item.codeSnippet) {
+      <p class="noData">No code snippet available.</p>
+      }
+    </div>
+  </div>
+</div>
+
+<div class="properties">
+  <div class="property-header">
+    <p><strong>Properties</strong></p>
+    <p><strong>Type</strong></p>
+    <p><strong>Default</strong></p>
+    <p><strong>Description</strong></p>
+  </div>
+  @if(item.properties.length){
+  @for(property of item.properties; track $index) {
+  <div class="property-row">
+    <p>{{ property.name }}</p>
+    <p>{{ property.type }}</p>
+    <p>{{ property.default }}</p>
+    <p>{{ property.description }}</p>
+  </div>
+  }
+}
+@else {
+<p class="noData">No data found</p>
+}
+</div>
+<div class="properties">
+  <div class="property-header">
+    <p><strong>Events</strong></p>
+    <p><strong>Type</strong></p>
+    <p><strong>Description</strong></p>
+  </div>
+  @if(item.outputs.length){
+  @for(output of item.outputs; track $index) {
+  <div class="property-row description-row">
+    <p>{{output.name}}</p>
+    <p>{{output.type}}</p>
+    <p>{{output.description}}</p>
+  </div>
+  }
+  }
+  @else {
+  <p>No data found</p>
+  }
+</div>
+}

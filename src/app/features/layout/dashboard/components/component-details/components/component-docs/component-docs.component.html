@@ -1,0 +1,71 @@
+<div *ngFor="let item of config?.exampleComponent; let index = index" class="item-container">
+  <h4>{{ item.description }}</h4>
+  @if(item.componentRef){
+  <ng-container DtGridsterWidget [component]="item.componentRef" [data]="item.inputData">
+  </ng-container>
+  }
+  @if(item.template){
+  <dt-timer [duration]="15">
+    <ng-template let-time="remainingTime" let-formatted="formattedTime" let-reset="reset">
+      @if (time > 0) {
+      Resend OTP in <strong>{{ formatted }}</strong>.
+      } @else {
+      <button (click)="reset()">Resend OTP</button>
+      }
+    </ng-template>
+  </dt-timer>
+  }
+  @if(item.gridster){
+    <dt-grister
+    [items]="gridItems"
+    [draggable]="true"
+    [resizable]="true"
+    [maxCols]="12"
+    [minCols]="3"
+    [spaceBetween]="10"
+    [colWidth]="105"
+    [rowHeight]="105"
+    (itemChange)="onItemChange($event)"
+    (itemResized)="onItemResized($event)"
+    (itemRemoved)="onItemRemoved($event)"
+    (gridSizeChanged)="onGridSizeChanged($event)"
+    (componentOutput)="handleComponentOutput($event)"
+    (templateOutput)="onTemplateOutput($event)">
+    </dt-grister>
+    <!-- <ng-template #myTemplate let-item  let-data="data">
+    <p>{{ data.message }}</p>
+    <button>
+    Emit Data
+    </button>
+    </ng-template> -->
+  }
+  <div class="component-docs">
+    <h3>Code Snippet</h3>
+    <div class="code-container">
+      @if(item.codeSnippet){
+      <div class="toggle-buttons">
+        @if(item.codeSnippet.html){
+        <button class="toggle-button" [class.active]="item.activeCodeType === 'html'"
+          (click)="setActiveCodeType(item, 'html')">HTML</button>
+        }
+        @if(item.codeSnippet.ts){
+        <button class="toggle-button" [class.active]="item.activeCodeType === 'ts'"
+          (click)="setActiveCodeType(item, 'ts')">Script</button>
+        }
+        @if(item.codeSnippet.command){
+        <button class="toggle-button" [class.active]="item.activeCodeType === 'command'"
+          (click)="setActiveCodeType(item, 'command')">Command</button>
+        }
+      </div>
+      <button class="copy-button"
+        (click)="copyCode(item.activeCodeType === 'html' ? item.codeSnippet.html : item.activeCodeType === 'ts' ? item.codeSnippet.ts : item.codeSnippet.command)">
+        <img src="assets/copy.svg" alt="Copy" class="copy-icon" />
+      </button>
+      <pre><code>{{ item.activeCodeType === 'html' ? item.codeSnippet.html : item.activeCodeType === 'ts' ? item.codeSnippet.ts : item.codeSnippet.command}}</code></pre>
+      }
+      @if(!item.codeSnippet){
+      <p>No code snippet available.</p>
+      }
+    </div>
+  </div>
+</div>
