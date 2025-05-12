@@ -131,3 +131,101 @@
 h4{
   font-weight: 500;
 }
+
+.api-container {
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--surface-color);
+}
+
+.code-block {
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 6px;
+  background-color: var(--text-primary);
+  font-family: 'Courier New', monospace;
+  color: var(--surface-color);
+  overflow-x: auto;
+}
+
+.code-content {
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.copy-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.5rem;
+  background: var(--surface-color);
+  color: var(--surface-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.code-block:hover .copy-button {
+  opacity: 1;
+}
+
+.copy-button:hover {
+  background-color: var(--primary-lighter);
+}
+
+.api-section {
+  margin: 2rem 0;
+  padding: 1rem;
+  background-color: var(--background-color);
+  border-radius: 6px;
+}
+
+.api-title {
+  color: var(--primary-color);
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.api-content {
+  background-color: var(--primary-color);
+  color: var(--surface-color);
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.api-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  background-color: var(--primary-lighter);
+  border: 1px solid var(--primary-color);
+}
+
+.api-table th,
+.api-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.api-table th {
+  background-color: var(--primary-light);
+  border-bottom: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.api-table tr:nth-child(even) {
+  background-color: var(--primary-lighter);
+}
+
+.api-table tr:hover {
+  background-color: var(--primary-light);
+}
+
+.property-name {
+  color: var(--text-primary);
+  font-weight: 500;
+}

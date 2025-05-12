@@ -1,16 +1,48 @@
 .dashboard-container {
   display: flex;
-  flex-direction: column;
   height: 100vh;
-  gap: 20px;
   overflow: hidden;
+  background-color: var(--background-color);
+}
+
+.sidebar {
+  width: 250px;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 60px; /* Height of header */
+  overflow-y: auto;
+  background-color: var(--background-color);
+  border-right: 1px solid var(--border-color);
+}
+
+.content-area {
+  flex: 1;
+  margin-left: 250px;
+  height: calc(100vh - 60px); /* Subtract header height */
+  margin-top: 60px; /* Height of header */
+  overflow-y: auto;
+  background-color: var(--background-color);
+  padding: 1.5rem;
+}
+
+.component-container {
+  background-color: var(--surface-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .header {
   position: fixed;
   top: 0;
-  width: 100%;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: var(--surface-color);
   z-index: 1000;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .details-section {
@@ -19,5 +51,5 @@
   padding: 1rem;
   overflow-y: auto;
   background-color: #fff;
-  margin-top: 34.5px;
+  margin-top: 68.5px;
 }

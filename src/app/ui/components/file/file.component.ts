@@ -13,7 +13,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   selector: 'dt-file',
   imports: [MatFormFieldModule, CommonModule],
   templateUrl: './file.component.html',
-  styleUrl: './file.component.scss',
+  styleUrls: ['./file.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FileComponent {
@@ -27,6 +27,15 @@ export class FileComponent {
   @Input() value?: FileList | null = null;
   @Output() valueChange = new EventEmitter<FileList | null>();
 
+  get fileList(): File[] {
+    const files = this.control?.value ?? this.value;
+    return files ? Array.from(files) : [];
+  }
+
+  get fileNames(): string {
+    return this.fileList.map(file => file.name).join(', ');
+  }
+
   onFileSelected(event: Event) {
     const input = event.target as HTMLInputElement;
     const files = input.files?.length ? input.files : null;
@@ -37,12 +46,11 @@ export class FileComponent {
     this.valueChange.emit(files);
   }
 
-  get fileNames(): string {
-    const files: FileList | null = this.control?.value ?? this.value;
-    return files
-      ? Array.from(files)
-          .map((file) => file.name)
-          .join(', ')
-      : '';
+  formatFileSize(bytes: number): string {
+    if (bytes === 0) return '0 B';
+    const k = 1024;
+    const sizes = ['B', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
   }
 }

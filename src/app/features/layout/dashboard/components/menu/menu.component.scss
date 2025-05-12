@@ -1,8 +1,8 @@
 .sidebar {
   width: 250px;
   height: calc(100vh - 60px);
-  background-color: #f4f4f4;
-  border-right: 1px solid #ddd;
+  background-color: var(--background-color);
+  border-right: 1px solid var(--border-color);
   position: fixed;
   top: 70px;
   left: 0;
@@ -11,82 +11,152 @@
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   font-family: Arial, sans-serif;
   user-select: none;
-}
 
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 
-.sidebar li {
-  cursor: pointer;
-  margin: 8px;
-  transition: background-color 0.3s, color 0.3s;
-  background-color: #ffffff;
-  color: #2c3e50;
-  font-size: 14px;
-  font-weight: 500;
-  user-select: none;
-  padding: 2px 0;
-}
+    li {
+      cursor: pointer;
+      margin: 8px;
+      transition: all 0.3s ease;
+      background-color: var(--surface-color);
+      color: var(--text-primary);
+      font-size: 14px;
+      font-weight: 500;
+      user-select: none;
+      padding: 2px 0;
 
-.sidebar li:hover {
-  background-color: #dceeff;
-  color: #1a73e8;
-}
+      &:hover {
+        background-color: var(--primary-lighter);
+        color: var(--primary-color);
+      }
 
-.sidebar {
-  .highlight {
-    background-color: #dceeff;
-    color: #1a73e8;
+      &.highlight {
+        background-color: var(--primary-lighter);
+        color: var(--primary-color);
+      }
+
+      &.active-menu {
+        background-color: var(--primary-color);
+        color: var(--surface-color);
+      }
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-top: 5px;
+
+      li {
+        padding: 4px 0;
+        background-color: transparent;
+        color: var(--text-primary);
+        font-size: 12px;
+        font-weight: 400;
+        border: none;
+
+        &:hover {
+          background-color: var(--primary-lighter);
+          color: var(--primary-color);
+        }
+
+        &.active {
+          background-color: var(--primary-lighter);
+          color: var(--primary-color);
+          font-weight: 500;
+        }
+      }
+    }
   }
 }
 
-.sidebar li.active-menu {
-  background-color: #1a73e8;
-  color: #ffffff;
+.menu-container {
+  height: 100%;
+  padding: 1rem;
+  background-color: var(--background-color);
+  border-right: 1px solid var(--border-color);
 }
 
-.sidebar ul ul {
-  padding-left: 20px;
-  margin-top: 5px;
-}
+.menu-section {
+  margin-bottom: 2rem;
 
-.sidebar ul ul li {
-  padding: 4px 0;
-  background-color: transparent;
-  color: #2c3e50;
-  font-size: 12px;
-  font-weight: 400;
-  border: none;
-  user-select: none;
-}
-
-.sidebar ul ul li:hover {
-  background-color: #dceeff;
-  color: #1a73e8;
-}
-
-.sidebar ul ul li.active {
-  background-color: #dceeff;
-  color: #1a73e8;
-  font-weight: 500;
+  .section-title {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    color: var(--text-primary);
+  }
 }
 
 .menu-item {
   display: flex;
   align-items: center;
-  padding: 12px 15px;
-  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 6px;
+  background-color: var(--surface-color);
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: var(--primary-lighter);
+    color: var(--primary-color);
+  }
+
+  &.active {
+    background-color: var(--primary-lighter);
+    color: var(--primary-color);
+  }
+
+  &.selected {
+    background-color: var(--primary-color);
+    color: var(--surface-color);
+  }
+}
+
+.submenu {
+  margin-left: 1rem;
+  
+  .submenu-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    border-radius: 4px;
+    margin-bottom: 0.25rem;
+
+    &:hover {
+      background-color: var(--primary-lighter);
+      color: var(--primary-color);
+    }
+
+    &.active {
+      background-color: var(--primary-lighter);
+      color: var(--primary-color);
+    }
+  }
+}
+
+.menu-icon {
+  margin-right: 0.75rem;
+  font-size: 1.2rem;
+  color: inherit;
+
+  &.active {
+    color: var(--primary-color);
+  }
 }
 
 .arrow-icon {
   font-size: 0.8rem;
-  color: #2c3e50;
+  color: var(--text-primary);
   margin-left: 10px;
-}
 
-.arrow-icon:hover {
-  color: #1a73e8;
+  &:hover {
+    color: var(--primary-color);
+  }
 }

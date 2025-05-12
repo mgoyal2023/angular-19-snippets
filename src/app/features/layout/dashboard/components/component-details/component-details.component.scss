@@ -1,25 +1,31 @@
 .tabs {
   display: flex;
   gap: 10px;
-  width:100%;
+  width: 100%;
   z-index: 999;
   position: sticky;
-  top: 0;
+  top: -20px;
   padding: 10px 0;
-  background-color: #fff;
+  background-color: var(--surface-color);
 }
 
 button {
   padding: 10px 20px;
   border: none;
-  background-color: #f0f0f0;
-  color:#217cb0;
+  background-color: var(--primary-lighter);
+  color: var(--primary-color);
   cursor: pointer;
-}
+  border-radius: 4px;
+  transition: all 0.2s ease;
 
-button.active {
-  background-color: #217cb0;
-  color: white;
+  &:hover {
+    background-color: var(--primary-light);
+  }
+
+  &.active {
+    background-color: var(--primary-color);
+    color: var(--surface-color);
+  }
 }
 
 .tab-content {
@@ -27,5 +33,40 @@ button.active {
 }
 
 .component-details {
-  margin-top: 10px;
+  padding: 1.5rem;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.details-header {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: var(--surface-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.component-title {
+  font-size: 1.25rem;
+  padding: 0.75rem 1rem;
+  background-color: var(--primary-lighter);
+  color: var(--primary-color);
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.component-description {
+  padding: 1rem;
+  background-color: var(--primary-color);
+  color: var(--surface-color);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.details-content {
+  background-color: var(--surface-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
 }

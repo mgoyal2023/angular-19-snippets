@@ -1,6 +1,25 @@
-<mat-label>{{ label }}</mat-label>
-<input matInput [disabled]="control?.disabled || disabled" [ngStyle]="cssStyle" (change)="onFileSelected($event)"
-    [accept]="accept" [multiple]="multiple" type="file" />
-@if(fileNames && showFileNames){
-<mat-hint>{{ fileNames }}</mat-hint>
-}
+<div class="file-upload-container" [class.disabled]="disabled">
+  <div class="upload-content">
+    <span class="upload-icon">🗂️</span>
+    <p class="upload-text">{{ label }}</p>
+    <p class="file-hint" *ngIf="accept">Accepted formats: {{ accept }}</p>
+  </div>
+  <input 
+    type="file" 
+    [disabled]="control?.disabled || disabled"
+    [ngStyle]="cssStyle" 
+    (change)="onFileSelected($event)"
+    [accept]="accept" 
+    [multiple]="multiple"
+  />
+</div>
+
+<div class="selected-files" *ngIf="showFileNames && fileNames">
+  <ul class="file-list">
+    <li *ngFor="let file of fileList">
+      <span class="file-icon">📄</span>
+      <span class="file-name">{{ file.name }}</span>
+      <span class="file-size">{{ formatFileSize(file.size) }}</span>
+    </li>
+  </ul>
+</div>

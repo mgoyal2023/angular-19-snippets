@@ -5,6 +5,6 @@ export const DASHBOARD_ROUTES: Route[] = [
     {
         path: '', 
         loadComponent: () => import('./dashboard.component').then(m => m.DashboardComponent),
-        children: [{path: ':type',component : ComponentDetailsComponent}]
+        children: [{ path: ':type', component: ComponentDetailsComponent }]
     }
 ]
