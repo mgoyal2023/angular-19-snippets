@@ -1,0 +1,1 @@
+import"./chunk-ATTBFS2X.js";var t=[{path:"",loadComponent:()=>import("./chunk-AMPPEDLH.js").then(o=>o.LayoutComponent),children:[{path:"",loadChildren:()=>import("./chunk-GP356ZAR.js").then(o=>o.DASHBOARD_ROUTES)}]}];export{t as LAYOUT_ROUTES};
